@@ -1,6 +1,8 @@
 package lab7;
 
 public class BankTransactionRecord {
+	public static int count = 0;
+	
 	private boolean canadianFunds;
 	private double exchangeRate;
 	private int transactionNumber;
@@ -10,6 +12,7 @@ public class BankTransactionRecord {
 	public BankTransactionRecord() {}
 	
 	public BankTransactionRecord(boolean canadianFunds, double exchangeRate, int transactionNumber, long transactionReferenceNumber) {
+		count++;
 		this.canadianFunds = canadianFunds;
 		this.exchangeRate = exchangeRate;
 		this.transactionNumber = transactionNumber;

@@ -8,20 +8,22 @@ public class BankTransactionRecordTestHarness {
 	public static void main(String[] args) {
 		//functional variables
 		Random random = new Random(System.currentTimeMillis());
-		Scanner scanNum = new Scanner(System.in);
 		Scanner scanStr = new Scanner(System.in);
 		
 		//variables
 		String option = "";
-		Double tempexchangeRate = 0.0;
 		
 		//initialize BankTransactionRecord array
 		BankTransactionRecord[] records = new BankTransactionRecord[500];
 		//instantiate 500 BankTransactionRecord random data
-		for (int i=0; i<500; i++) {
+		for (int i=0; i<records.length; i++) {
 			records[i] = BankTransactionRecordTestHarness.createRandomData(random);
+		}
+		System.out.println("Trace:" + BankTransactionRecord.count);
+		//Print all state of each objects
+		for(int i=0; i<records.length; i++) {
 			System.out.println("Recode#" + (i+1) + " " + records[i].toString());
-			System.out.printf("\n-------------------------------------------\n");
+			System.out.println("-------------------------------------------");
 		}
 		
 		//Ask if users want to phase two of test
@@ -36,12 +38,17 @@ public class BankTransactionRecordTestHarness {
 			case "y":
 			case "Y":
 				System.out.println("\nChange Exchange Rate to Default value");
-				System.out.printf("Input Exchange Rate (Double type): ");
-				tempexchangeRate = scanNum.nextDouble();
-				for (int i=0; i<500; i++) {
-					records[i].setExchangeRate(tempexchangeRate);
+				//Change to default value
+				for (int i=0; i<records.length; i++) {
+					records[i].setCanadianFunds(true);
+					records[i].setExchangeRate(0.1);
+					records[i].setTransactionNumber(12345);
+					records[i].setTransactionReferenceNumber(66666666);
+				}
+				//Print all state of each objects
+				for (int i=0; i<records.length; i++) {
 					System.out.println("Recode#" + (i+1) + " " + records[i].toString());
-					System.out.printf("\n-------------------------------------------\n");
+					System.out.println("-------------------------------------------");
 				}
 				break;
 			//finish the application
