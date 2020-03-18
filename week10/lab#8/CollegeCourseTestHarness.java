@@ -62,7 +62,8 @@ public class CollegeCourseTestHarness {
 			System.out.printf("Row idx: %d, Column idx: %d\n", row, column);
 			System.out.println(courses[row][column].toString());
 		} catch (ArrayIndexOutOfBoundsException e) {
-			e.printStackTrace();
+			//e.printStackTrace();
+			System.out.println("Please provide a valid set of numbers!!!");
 		} finally {
 			System.out.println("End...");
 		}
