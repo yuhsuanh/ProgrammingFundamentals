@@ -55,39 +55,43 @@ public class RealEstateTransaction {
 	//Method 2
 	public String getSubString() {
 		Random random = new Random(System.currentTimeMillis());
-		String str = this.transformText();
+		String str = streetNumber + streetName + city + price;
 		String result = "";
-		int value = 0;
+		int index1, index2;
 		
 		//font portion
-		value = createRandomValue(random, str.length()/2);
-		result = result.concat(str.substring(value, str.length()/2));
-		//back portion
 		while(true) {
-			value = createRandomValue(random, str.length());
-			if(value > str.length()/2 && value < str.length())
+			index1 = random.nextInt(str.length());
+			if(index1 > 0 && index1 < str.length()-1);
 				break;
 		}
-		result = result.concat(str.substring(value));
+		result = result.concat(str.substring(0, index1).toLowerCase());
+		
+		//back portion
+		while(true) {
+			index2 = random.nextInt(str.length());
+			if(index2 > index1)
+				break;
+		}
+		result = result.concat(str.substring(index1, index2).toUpperCase());
 		return result;
 	}
 	
 	//Method 3
-	public String encryptedString(int charIndex, int encryptedLength) {
-		String str = streetNumber + streetName + city + price;
+	public String encryptedString(int charIndex, int encryptedDistance) {
+		char[] str = (streetNumber + streetName + city + price).toCharArray();
 		System.out.println(str);
 		
-		if(charIndex > str.length() || charIndex + encryptedLength > str.length() || encryptedLength > charIndex)
+		if(charIndex > str.length || encryptedDistance > str.length || encryptedDistance < charIndex)
 			return "1";
 		
-		String charactor = String.valueOf(str.charAt(charIndex));
-		String replaceString = str.substring(charIndex, charIndex+encryptedLength);
-		System.out.println(replaceString);
+		char replace = str[charIndex];
+		str[charIndex+encryptedDistance+1] = replace;
+		for(int i=charIndex+encryptedDistance+1; i<str.length; i += 3) {
+			str[i] = replace;
+		}
 		
-		return str.replace(charactor, replaceString);
+		return String.valueOf(str);
 	}
 	
-	private int createRandomValue(Random random, int bound) {
-		return (int) random.nextInt(bound);
-	}
 }
