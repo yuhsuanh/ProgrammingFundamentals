@@ -6,7 +6,7 @@ public class ReturnString {
 	
 	//Constructor
 	public ReturnString() {
-		strings = new String[10];
+		strings = new String[1];
 	}
 	
 	//Getter and setter

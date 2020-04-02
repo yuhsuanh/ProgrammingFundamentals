@@ -2,7 +2,11 @@ package lab10;
 
 public class SuperString {
 
-	public static void method1(String inputStr) {
+	/**
+	 * Find Words inside the Input String
+	 * @param inputStr
+	 */
+	public static void findKeywordInsideString(String inputStr) {
 		final String[] STRING_ARRAY = {"Hat", "Cat", "Bat", "Fine", "Pine", "At", "Pi", "Bee", "Art", "Dog"};
 		
 		String input = inputStr.toLowerCase();
@@ -12,7 +16,15 @@ public class SuperString {
 		}
 	}
 	
-	public static ReturnString method2(String original, int length, char startChar) {
+	/**
+	 * Get each substring From "Original" and each substring which length is "length" starts from "startChar"
+	 * 
+	 * @param original Original String Input
+	 * @param length Each Substring Length 
+	 * @param startChar Each Substring Start From this character in Original String
+	 * @return RetrunStrin Object which include String Array
+	 */
+	public static ReturnString getSubstringInsideStringByChar(String original, int length, char startChar) {
 		ReturnString result = new ReturnString();
 		
 		String lowercaseString = original.toLowerCase();
@@ -45,13 +57,9 @@ public class SuperString {
 				tempStr.delete(0, index+1);
 //				System.out.println(i + ", " + success[i]);
 			}
-			
 			result.setStrings(success);
 		}
 		return result;
 	}
 	
-	public static void method3() {
-		
-	}
 }
